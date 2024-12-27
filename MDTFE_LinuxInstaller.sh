@@ -8,13 +8,14 @@ VERSION="0.1.5"
 which wine > /dev/null
 
 if (( $? != 0 )); then
-
+	
+	echo 'Wine has not been detected on this system, do you wish to install (y/n)'
+	
+	read installWine
+	
 	if [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
-   		echo 'Wine has not been detected on this system, do you wish to install
-		(y/n)'
-
-		read installWine
-
+   		
+		
 		if [ "$(grep -Ei 'y|Y' $installWine)" ]; then
 			sudo apt-get install wine64
 			sudo apt-get install wine32
@@ -24,10 +25,6 @@ if (( $? != 0 )); then
 	fi
 
 	if [ "$(grep -Ei 'fedora|redhat' /etc/*release)" ]; then
-		echo 'Wine has not been detected on this system, do you wish to install
-		(y/n)'
-
-		read installWine
 
 		#Forgive me on this people, I work on an Ubuntu machine, let me know if
 		#you have issues and I will work with you to fix it
