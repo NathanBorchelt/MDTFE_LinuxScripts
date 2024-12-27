@@ -13,7 +13,7 @@ if (( $? != 0 )); then
    		echo 'Wine has not been detected on this system, do you wish to install
 		(y/n)'
 
-		read isntallWine
+		read installWine
 
 		if [ "$(grep -Ei 'y|Y' $installWine)" ]; then
 			sudo apt-get install wine64
@@ -27,7 +27,7 @@ if (( $? != 0 )); then
 		echo 'Wine has not been detected on this system, do you wish to install
 		(y/n)'
 
-		read isntallWine
+		read installWine
 
 		#Forgive me on this people, I work on an Ubuntu machine, let me know if
 		#you have issues and I will work with you to fix it
@@ -38,6 +38,11 @@ if (( $? != 0 )); then
 		fi
 
 	fi
+
+	echo 'This has installed Wine using the default package handler, you may
+	want to install it with FlatPak or a different repo if it causes issues and
+	may be out of date'
+
 fi
 
 wine "MDTFE_Setup_$VERSION.exe"
